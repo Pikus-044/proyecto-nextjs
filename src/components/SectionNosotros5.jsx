@@ -7,25 +7,24 @@ const FlipCardSimple = ({ number, title, description }) => {
 
   return (
     <div
-      className="w-65 h-90 bg-white rounded-lg shadow-lg p-6 cursor-pointer flex items-center justify-center text-center transition-transform duration-500"
+      className={`w-65 h-90 rounded-lg shadow-lg p-6 cursor-pointer flex flex-col items- justify-center text-start transition-colors duration-500 ${
+        isFlipped ? "bg-[#000047] text-white" : "bg-white text-black"
+      }`}
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
     >
       {isFlipped ? (
-        // Parte trasera
-        <div className="text-white bg-[#000047] flex items-center justify-center p-4 h-full w-full rounded-lg">
-          <p className="text-sm">{description}</p>
-        </div>
+        <p className="text-sm">{description}</p>
       ) : (
-        // Parte frontal
-        <div className="flex flex-col items-center justify-center text-center">
-          <h1 className="text-[50px] font-bold text-[#000047]">{number}</h1>
-          <h2 className="text-[24px] font-bold text-[#000047] mb-[10px]">
-            {title}
-          </h2>
-          <p className="text-[16px] text-[#7a7a7a]">{description}</p>
-        </div>
+        <>
+          <h1 className="text-[50px] text-[#000047] font-bold">{number}</h1>
+          <h2 className="text-[24px] text-[#222222] font-bold mb-[12px]">{title}</h2>
+          <p className="text-[#666666] mb-[24px] text-[10px]">____________________</p>
+          <p className="text-[#7a7a7a]">{description}</p>
+          
+        </>
       )}
+      <p className="text-[#000047] text-[20px] font-black">____________________________</p>
     </div>
   );
 };
@@ -72,7 +71,7 @@ const SectionNosotros5 = () => {
 
   return (
     <div className="w-full bg-white py-[50px]">
-      <div className="max-w-[1200px] mx-auto text-center">
+      <div className="max-w-[1200px] mx-auto text-start">
         {/* Grid de tarjetas */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[30px]">
           {cards.map((card, index) => (

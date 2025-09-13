@@ -7,20 +7,25 @@ const FlipCardSimple = ({ frontContent, backContent }) => {
 
   return (
     <div
-      className="w-65 h-90 bg-white rounded-lg shadow-lg p-6 cursor-pointer flex items-center justify-center text-center transition-colors duration-300"
+      className={`w-65 h-90 rounded-lg shadow-lg p-6 cursor-pointer flex items-center justify-center text-center transition-colors duration-300 ${
+        isFlipped ? "bg-gray-700" : "bg-white"
+      }`}
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
     >
       {isFlipped ? (
-        <div className="bg-gray-700 text-white justify-center items-center overflow-auto break-words p-2 h-full w-full text-sm">
+        <div className="text-white flex items-center justify-center w-full h-full text-sm">
           {backContent}
         </div>
       ) : (
-        <div className="font-bold text-lg">{frontContent}</div>
+        <div className="font-bold text-lg w-full h-full flex flex-col items-center justify-center">
+          {frontContent}
+        </div>
       )}
     </div>
   );
 };
+
 
 const SectionInicio1 = () => {
   return (
